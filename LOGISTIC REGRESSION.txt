@@ -1,0 +1,33 @@
+
+
+
+
+import pandas as pd 
+import warnings
+warnings.filterwarnings('ignore')
+data1=pd.read_csv('D:\desktop\marks.csv')
+x = data1.iloc[:,2:4].values
+y= data1.iloc[:,4].values
+from sklearn.cross_validation import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=0)
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
+classifier.fit(x_train,y_train)
+y_pred = classifier.predict(x_test)
+# Logistic Regression
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression()
+logreg.fit(x_train, y_train)
+y_pred = logreg.predict(x_test)
+acc_log = round(logreg.score(x_train, y_train) * 100, 2)
+print("Logistic Regression",acc_log)
+
+
+
+
+
+
+
+
+
+
